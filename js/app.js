@@ -1,23 +1,10 @@
 /**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
-
-/**
  * Define Global Variables
  * 
 */
-
+let activeClassName = "your-active-class";
+let activeTitle = null;
+const navList = document.getElementById("navbar__list");
 
 /**
  * End Global Variables
@@ -25,33 +12,30 @@
  * 
 */
 
-
-
 /**
  * End Helper Functions
  * Begin Main Functions
  * 
 */
 
-// build the nav
+// build nav
+let navbar = document.getElementById("nav-menu");
 
+document.addEventListener("DOMContentLoaded", function() {
+    navbar.style.cssText = "background-color: #000d3c; height: 100px;";
+    navList.style.cssText = "display: flex; flex-direction: row; font-size: 25px; justify-content: space-around;";
+});
 
-// Add class 'active' to section when near top of viewport
+// build menu
+let containerSize = document.getElementsByClassName("landing__container").length;
+for (let i = 1; i < containerSize + 1; i++) {
+    const section = document.getElementById("section"+i);
+    const title = document.getElementById("title"+i);
+    const listTitle = document.createElement("li");
 
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
+    // create list elements
+    listTitle.classList.add("nav-element");
+    listTitle.setAttribute("id", "nav_title" + i);
+    listTitle.textContent = title.textContent;
+    navList.appendChild(listTitle);  
+};
