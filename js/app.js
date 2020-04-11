@@ -37,5 +37,19 @@ for (let i = 1; i < containerSize + 1; i++) {
     listTitle.classList.add("nav-element");
     listTitle.setAttribute("id", "nav_title" + i);
     listTitle.textContent = title.textContent;
-    navList.appendChild(listTitle);  
+    navList.appendChild(listTitle);
+
+    //event listener for nav list items
+    listTitle.addEventListener("click", function() {
+        // set sections as active
+        // add class 'active' to section when near top of viewport
+        let activeClass = document.getElementsByClassName(activeClassName).item(0);
+        activeClass.classList.remove(activeClassName);
+        section.classList.add(activeClassName);
+
+        // scroll to section on link click
+        section.scrollIntoView({
+            behavior: "smooth"
+        });
+    });
 };
