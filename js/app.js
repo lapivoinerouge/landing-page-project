@@ -8,15 +8,16 @@ const navList = document.getElementById("navbar__list");
 
 /**
  * End Global Variables
- * Start Helper Functions
+ * Start Functions
  * 
 */
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
+function underlineTitle(element) {
+    if (activeTitle != null) {
+        activeTitle.style.cssText = "text-decoration: none;";
+    }
+    element.style.cssText = "text-decoration: underline; text-decoration-color: yellow;";
+    activeTitle = element;
+}
 
 // build nav
 let navbar = document.getElementById("nav-menu");
@@ -47,6 +48,9 @@ for (let i = 1; i < containerSize + 1; i++) {
         activeClass.classList.remove(activeClassName);
         section.classList.add(activeClassName);
 
+        // highlight picked title
+        underlineTitle(this);
+        
         // scroll to section on link click
         section.scrollIntoView({
             behavior: "smooth"
