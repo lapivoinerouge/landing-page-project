@@ -94,6 +94,25 @@ section {
     transition: ease 0.3s all;
 }
 
+#navbar__list {
+    display: flex; 
+    flex-direction: row; 
+    font-size: 22px; 
+    justify-content: space-evenly;
+}
+
+@media(min-width: 650px) and (max-width: 950px) {
+    #navbar__list {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 650px) {
+    #navbar__list {
+        font-size: 11px;
+    }
+}
+
 /* Header Styles */
 .page__header {
     background: #fff;
@@ -230,7 +249,7 @@ section.your-active-class .landing__container::after {
 
 #scroll-up {
     position: fixed;
-    opacity: 0;
+    display: none;
     top: 80%;
     left: 45%;
     z-index: 3;
