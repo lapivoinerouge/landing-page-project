@@ -227,3 +227,16 @@ section.your-active-class .landing__container::after {
 		           rotate(-360deg);
 	}
 }
+
+#scroll-up {
+    position: fixed;
+    opacity: 0;
+    top: 80%;
+    left: 45%;
+    z-index: 3;
+    height: 50px;
+    width: 100px;
+    background-color: rgb(204, 206, 122);
+    color: rgb(255, 255, 255);
+    border-radius: 60%;
+}
