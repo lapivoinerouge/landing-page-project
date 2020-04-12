@@ -4,6 +4,7 @@ const activeClassName = "your-active-class";
 let topButton;
 let activeClass = document.getElementsByClassName(activeClassName).item(0);
 let activeTitle = null;
+let x = window.matchMedia("(max-width: 650px)");
 
 // highlight picked title
 function underlineTitle(title) {
@@ -28,6 +29,42 @@ function createButton() {
     topButton.textContent = "back to top";
     const header = document.querySelector("header");
     header.insertAdjacentElement("afterend", topButton);  
+}
+
+// responsiveness for mobile phone 
+function mobileScreen() {
+    if (x.matches) {
+        const menuIcon = document.createElement("div");
+        menuIcon.setAttribute("id", "menu_icon");
+        for (let i = 0; i <3; i++) {
+            const div = document.createElement("div");
+            menuIcon.appendChild(div);
+        }
+        navbar.insertAdjacentElement("afterbegin", menuIcon);
+        navList.style.cssText = "display: none;";
+        document.getElementById("page__header").insertAdjacentElement("beforebegin", navList);
+        let isOpen = false;
+        menuIcon.addEventListener("click", function() {
+            if (!isOpen) {
+                document.documentElement.scrollTop = 0;
+                navList.style.cssText = "display: flex;";
+                isOpen = true;
+            } else {
+                document.documentElement.scrollTop = 0;
+                navList.style.cssText = "display: none;";
+                isOpen = false;
+            }
+        });
+    }
+}
+
+// responsiveness for resized window
+function browserScreen() {
+    if (document.getElementById("main").firstElementChild === navList) {
+        navbar.removeChild(document.getElementById("menu_icon"));
+        navbar.appendChild(navList);
+        navList.style.cssText = "display: flex;";
+    }
 }
 
 // build nav
@@ -86,3 +123,13 @@ window.addEventListener('scroll', function() {
 topButton.addEventListener("click", function() {
     document.documentElement.scrollTop = 0;
 });
+
+// media query for mobile phone
+mobileScreen();
+window.addEventListener("resize", function() {
+    if(x.matches) {
+        mobileScreen();
+    } else {
+        browserScreen();
+    }
+})
